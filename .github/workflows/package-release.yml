@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout Repository
 
+      - run: git tag $(date '+%Y.%m.%d.%H.%M.%S')
+
       - run: git archive -9 -o latest.tar.gz HEAD
         name: Archive Repository
         
