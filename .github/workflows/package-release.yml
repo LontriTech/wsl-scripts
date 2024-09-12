@@ -18,10 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: git archive -9 -o ${{ github.ref }}.tar.gz HEAD
+      - run: git archive -9 -o latest.tar.gz HEAD
         
       - name: Upload Package
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.ref }}-packaged
-          path: ${{ github.ref }}.tar.gz
+          name: wsl-scripts-packaged
+          path: latest.tar.gz
