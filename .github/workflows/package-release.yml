@@ -1,0 +1,27 @@
+name: "Package and Release Scripts"
+run-name: "Release package triggered by @${{ github.actor }}"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src/**'
+
+jobs:
+  package-release:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: git archive -9 -o ${{ github.ref }}.tar.gz HEAD
+        
+      - name: Upload Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref }}-packaged
+          path: ${{ github.ref }}.tar.gz
