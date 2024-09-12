@@ -34,4 +34,4 @@ jobs:
           files: latest.tar.gz
           generate_release_notes: true
           make_latest: "true"
-          tag_name: ${{ env.TAG }}
+          tag_name: $TAG
