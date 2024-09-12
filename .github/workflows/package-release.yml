@@ -24,11 +24,12 @@ jobs:
 
       - run: git archive -9 -o latest.tar.gz HEAD
         name: Archive Repository
+
+      - run: export TAG=$(date '+%Y.%m.%d.%H.%M.%S')
+        name: Set TAG var
         
       - name: Release
         uses: softprops/action-gh-release@v2
-        env:
-          TAG: $(date '+%Y.%m.%d.%H.%M.%S')
         with:
           files: latest.tar.gz
           generate_release_notes: true
