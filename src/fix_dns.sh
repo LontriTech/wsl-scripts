@@ -44,7 +44,7 @@ fi
 echo -e "DNS nameservers set to $DNS1 and $DNS2 in '/etc/resolv.conf'... \n"
 
 {
-  echo -e "[network]\n"
+  echo -e "\n[network]"
   echo -e "generateResolvConf = false\n"
 } | sudo tee -a /etc/wsl.conf > /dev/null
 
